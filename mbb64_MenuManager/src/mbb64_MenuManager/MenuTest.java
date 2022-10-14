@@ -9,14 +9,16 @@ public class MenuTest {
 		Sides greenBeans = new Sides("Green Beans", "Green beans with salt, pepper, and lemon juice", 15);
 		Salad ceaser = new Salad("Ceaser Salad", "Salad with ceaser dressing", 45);
 		Salad garden = new Salad("Garden Salad", "Salad with tomatoes", 35);
-		Dessert brownieSundae = new Dessert("Brownie Salad", "Brownie topped with ice cream", 570);
+		Dessert brownieSundae = new Dessert("Brownie Sundae", "Brownie topped with ice cream", 570);
 		
-		//Menu mOne = new Menu("First menu", steak, ceaser);
-		//System.out.println(mOne.getName() + " " + mOne.getEntree().getName() + " " + mOne.getSalad().getName());
+		Menu mOne = new Menu("First menu", steak, null, ceaser, null);
+		System.out.println(mOne.getName() + ": " + "\n" + mOne.description());
+		System.out.println("Total Calories: " + mOne.totalCalories() + "\n");
+		
 		
 		Menu mTwo = new Menu("Second Menu", chicken, greenBeans, garden, brownieSundae);
-		System.out.println(mTwo.getName() + " " + mTwo.getEntree().getName() + " " + mTwo.getSide().getName() + " " + mTwo.getSalad().getName() + " " + mTwo.getDessert().getName());
-		
+		System.out.println(mTwo.getName() + ": " + "\n" + mTwo.description());
+		System.out.println("Total Calories: " + mTwo.totalCalories() + "\n");
 	}
 
 }

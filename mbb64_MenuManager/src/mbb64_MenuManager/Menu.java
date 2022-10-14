@@ -28,17 +28,56 @@ public class Menu {
 		this.salad = salad;
 		this.dessert = dessert;
 	}
-	public int totalCalories(int total) {
-		total = entree.getCalories() + side.getCalories() + salad.getCalories() + dessert.getCalories();
+	public int totalCalories() {
+		int total = 0;
+		if (entree != null) {
+			total += entree.getCalories();
+		}
+		if (side != null) {
+			total += side.getCalories();
+		}
+		if (salad != null) {
+			total += salad.getCalories();
+		}
+		if (dessert != null) {
+			total += dessert.getCalories();
+		}
 		return total;
 	}
-	// int total = salad.getCalories()
-	// then return int
-	public String description(String mealDescription) {
-		mealDescription = entree.getDescription() + side.getDescription() + salad.getDescription() + dessert.getDescription();
-		return mealDescription;
+	
+	public String description() {
+		String mealDescription = "";
+		if (entree == null) {
+			mealDescription += "Entree: N/A";
+		}
+			else {
+				mealDescription += "Entree: " + entree.getDescription();
+		}
+		mealDescription += "\n";
+		if (side == null) {
+			mealDescription += "Side: N/A";
+		}
+			else {
+				mealDescription += "Side: " + side.getDescription();
+		}
+		mealDescription += "\n";
+		if (salad == null) {
+			mealDescription += "Salad: N/A";
+		}
+			else {
+				mealDescription += "Salad: " + salad.getDescription();
+		}
+		mealDescription += "\n";
+		if (dessert == null) {
+			mealDescription += "Dessert: N/A";
+		}
+			else {
+				mealDescription += "Dessert: " + dessert.getDescription();
+		}
+	return mealDescription;
 	}
 
+	
 	public String getName() {
 		return name;
 	}
