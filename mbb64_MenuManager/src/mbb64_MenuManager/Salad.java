@@ -1,10 +1,14 @@
 package mbb64_MenuManager;
-
+/**
+ * Class Salad
+ * author : Max Bauer
+ * created: 10/12/2022
+ */
 public class Salad {
 	private String name;
 	private String description;
 	private int calories;
-	
+
 	public Salad(String name, String description, int calories) {
 		this.name = name;
 		this.description = description;

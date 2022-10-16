@@ -1,10 +1,15 @@
 package mbb64_MenuManager;
+/**
+ * Class Entree
+ * author : Max Bauer
+ * created: 10/12/2022
+ */
 
 public class Entree {
 	private String name;
 	private String description;
 	private int calories;
-	
+
 	public Entree(String name, String description, int calories) {
 		this.name = name;
 		this.description = description;
@@ -34,6 +39,5 @@ public class Entree {
 	public void setCalories(int calories) {
 		this.calories = calories;
 	}
-
 
 }
