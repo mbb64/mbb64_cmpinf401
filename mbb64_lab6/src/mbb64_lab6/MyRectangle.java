@@ -46,12 +46,15 @@ public class MyRectangle {
 		public boolean isInside(int xInside, int yInside){
 			int xEndPoint = x + w;
 			int yEndPoint = y + h;
-			
+			boolean point;
 			if ((xInside >= x && xInside <= xEndPoint) && (yInside >= y && yInside <= yEndPoint)) {
-				System.out.println("Point is within the rectangle.");
+				//System.out.println("Point is within the rectangle.");
+				point = true;
 			}else{
-					System.out.println("Point outside rectangle.");
+					//System.out.println("Point outside rectangle.");
+					point = false;
 				}
+			return point;
 			}
 			
 			// This is the trickiest of the methods to write.  This should

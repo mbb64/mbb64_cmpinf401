@@ -2,7 +2,7 @@ package mbb64_lab6;
 
 public class Lab6 {
 
-	public static void main(String[] args) {
+	
 		public static void testInside(MyRectangle R, int x, int y){
 			System.out.print("Point (" + x + "," + y + ")");
 			if (R.isInside(x, y))
@@ -42,4 +42,4 @@ public class Lab6 {
 		}
 	}
 
-}
+
