@@ -43,13 +43,23 @@ public class MyRectangle {
 			return S.toString();
 		}
 
-		public boolean isInside(int x, int y){
+		public boolean isInside(int xInside, int yInside){
+			int xEndPoint = x + w;
+			int yEndPoint = y + h;
+			
+			if ((xInside >= x && xInside <= xEndPoint) && (yInside >= y && yInside <= yEndPoint)) {
+				System.out.println("Point is within the rectangle.");
+			}else{
+					System.out.println("Point outside rectangle.");
+				}
+			}
+			
 			// This is the trickiest of the methods to write.  This should
 			// return true if point (x,y) is anywhere within the borders of the
 			// current MyRectangle (including the borders themselves).  Use a
 			// pencil and paper to figure out how this can be determined with
 			// just a few simple relational operations.
-		}
+
 
 		public void setSize(int newW, int newH){
 			this.w = newW;
