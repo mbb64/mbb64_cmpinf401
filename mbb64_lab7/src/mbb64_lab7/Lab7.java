@@ -55,7 +55,6 @@ public class Lab7 {
 		Random rd = new Random();
 		 for (int i = 0; i < array.length; i++) {
 	         array[i] = rd.nextDouble();
-	         System.out.println(array[i]);
 		}
 		 System.out.println("The max is " + max(array));
 		 System.out.println("The min is " + min(array));
