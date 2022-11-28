@@ -52,6 +52,22 @@ public class Menu {
 		return total;
 	}
 
+	public double totalPrice() {
+		double total = 0;
+		if (entree != null) {
+			total += entree.getPrice();
+		}
+		if (side != null) {
+			total += side.getPrice();
+		}
+		if (salad != null) {
+			total += salad.getPrice();
+		}
+		if (dessert != null) {
+			total += dessert.getPrice();
+		}
+		return total;
+	}
 	public String description() {
 		String mealDescription = "";
 		if (entree == null) {
@@ -118,5 +134,8 @@ public class Menu {
 
 	public void setDessert(Dessert dessert) {
 		this.dessert = dessert;
+	}
+	public String toString() {
+		return name;
 	}
 }
