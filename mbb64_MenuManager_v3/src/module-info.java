@@ -1,2 +1,2 @@
-module mbb64_MenuManager_v3 {
+module mbb64_MenuManager {
 }

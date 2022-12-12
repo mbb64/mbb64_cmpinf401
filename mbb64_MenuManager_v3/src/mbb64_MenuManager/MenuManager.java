@@ -27,8 +27,7 @@ public class MenuManager {
 				salads.add((Salad) menuObject);
 			} else if (menuObject instanceof Dessert) {
 				desserts.add((Dessert) menuObject);
-			} else
-				;
+			} else;
 
 		}
 
