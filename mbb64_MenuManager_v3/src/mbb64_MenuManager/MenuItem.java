@@ -1,5 +1,9 @@
 package mbb64_MenuManager;
-
+/**
+ * Class MenuItem
+ * author : Max Bauer
+ * created: 11/27/2022
+ */
 public class MenuItem {
 	private String name;
 	private String description;

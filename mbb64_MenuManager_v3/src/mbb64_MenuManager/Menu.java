@@ -1,8 +1,7 @@
 package mbb64_MenuManager;
+
 /**
- * Class Menu
- * author : Max Bauer
- * created: 10/12/2022
+ * Class Menu author : Max Bauer created: 10/26/2022
  */
 public class Menu {
 	private String name;
@@ -68,6 +67,7 @@ public class Menu {
 		}
 		return total;
 	}
+
 	public String description() {
 		String mealDescription = "";
 		if (entree == null) {
@@ -135,6 +135,7 @@ public class Menu {
 	public void setDessert(Dessert dessert) {
 		this.dessert = dessert;
 	}
+
 	public String toString() {
 		return name;
 	}
