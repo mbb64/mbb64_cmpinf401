@@ -8,11 +8,11 @@ package mbb64_MenuManager;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MenuManager {
-	private ArrayList<Entree> entrees;
-	private ArrayList<Sides> sides;
-	private ArrayList<Salad> salads;
-	private ArrayList<Dessert> desserts;
+public class MenuManager{
+	private ArrayList<Entree> entrees = new ArrayList<Entree>();
+	private ArrayList<Sides> sides = new ArrayList<Sides>();
+	private ArrayList<Salad> salads = new ArrayList<Salad>();
+	private ArrayList<Dessert> desserts = new ArrayList<Dessert>();
 
 	public MenuManager(String dishesFile) {
 		ArrayList<MenuItem> items = FileManager.readItems(dishesFile);
@@ -28,12 +28,38 @@ public class MenuManager {
 			} else if (menuObject instanceof Dessert) {
 				desserts.add((Dessert) menuObject);
 			} else;
-
 		}
 
 	}
 
 	public Menu randomMenu(String name) {
+		
+		/*Entree e = null;
+		Sides s = null;
+		Salad sld = null;
+		Dessert d = null;
+		Random rand = new Random();
+		for(int i = 0; i < entrees.size(); i++) {
+			int index = rand.nextInt(entrees.size());
+			e = entrees.get(index);
+		}
+		for(int i = 0; i < sides.size(); i++) {
+			int index = rand.nextInt(sides.size());
+			s = sides.get(index);
+		}
+		for(int i = 0; i < salads.size(); i++) {
+			int index = rand.nextInt(salads.size());
+			sld = salads.get(index);
+		}
+		for(int i = 0; i < desserts.size(); i++) {
+			int index = rand.nextInt(desserts.size());
+			d = desserts.get(index);
+		}
+		Menu randomMenu = new Menu(name, e, s, sld, d);
+		return randomMenu;
+	}
+	*/
+		
 		Random rand = new Random();
 		int e = entrees.size();
 		int s = sides.size();
@@ -45,7 +71,8 @@ public class MenuManager {
 		Dessert dessert_1 = desserts.get(rand.nextInt(d));
 		Menu randomMenu = new Menu(name, entree_1, side_1, salad_1, dessert_1);
 		return randomMenu;
-	}
+		}
+		
 
 	/*
 	 * public Menu minCaloriesMenu(String name) { return Menu; } public Menu

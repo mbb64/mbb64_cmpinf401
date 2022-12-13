@@ -48,5 +48,10 @@ public class MenuItem {
 		public String toString() {
 			return name;
 		}
-
+		public String newString() {
+			String all = new String();
+			all = (name + " " + description + " Calories: " + calories + " Price: $" + price);
+			return all;
+		}
+		
 }

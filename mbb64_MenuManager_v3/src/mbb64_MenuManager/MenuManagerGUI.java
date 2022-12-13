@@ -1,8 +1,12 @@
 package mbb64_MenuManager;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import java.util.ArrayList;
+
+
 
 public class MenuManagerGUI {
 	private JLabel lbl;
@@ -14,12 +18,17 @@ public class MenuManagerGUI {
 	private JLabel lbl_dessert;
 	private JFrame mainFrame;
 	private JButton button;
+	private JButton btnDetails;
+	private JButton btnSave;
+	private JButton btnDelete;
+	private JButton btnRandom;
 	private JComboBox<Entree> entreeBox;
 	private JComboBox<Sides> sideBox;
 	private JComboBox<Salad> saladBox;
 	private JComboBox<Dessert> dessertBox;
-	private JTextField field;
 	private MenuManager menu;
+    private JList list1;
+    private DefaultListModel listModel;
 	
 	public MenuManagerGUI() {
 		menu = new MenuManager("data/dishes.txt");
@@ -31,6 +40,113 @@ public class MenuManagerGUI {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.getContentPane().setLayout(null);
 		
+		 listModel = new DefaultListModel();
+	        list1 = new JList(listModel);
+	        list1.setBounds(275, 50, 200, 200);
+	        list1.setBorder(BorderFactory.createLineBorder(Color.black));
+	        mainFrame.getContentPane().add(list1);
+	        
+	        
+	        btnDetails = new JButton("Details");
+	        btnDetails.setBounds(275, 260, 100, 29);
+	        mainFrame.getContentPane().add(btnDetails);
+	        btnDetails.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent a) {
+	        		if(a.getSource()==btnDetails) {
+	        			
+	        			int selectedIndex = list1.getSelectedIndex();
+	        		    Menu item = (Menu)listModel.getElementAt(selectedIndex); 
+	        			
+	        			JFrame newWindow = new JFrame("Menu: " + item.getName());
+	        			newWindow.setBounds(100, 100, 700, 800);
+	        			newWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        			newWindow.getContentPane().setLayout(null);
+	        			newWindow.setVisible(true);
+	        			
+	        			JLabel labelE = new JLabel("Entree:");
+	        			labelE.setBounds(20, 40, 150, 30);
+	        			newWindow.getContentPane().add(labelE);
+	        			
+	        			JTextArea txtE = new JTextArea(item.getEntree().newString());
+	        			txtE.setBounds(80, 40, 600, 100);
+	        			txtE.setEditable(false);
+	        			txtE.setLineWrap(true);
+	        			newWindow.getContentPane().add(txtE);
+	        			
+	        			JLabel labelS = new JLabel("Side:");
+	        			labelS.setBounds(20, 140, 150, 30);
+	        			newWindow.getContentPane().add(labelS);
+	        			
+	        			JTextArea txtS = new JTextArea(item.getSide().newString());
+	        			txtS.setBounds(80, 140, 600, 100);
+	        			txtS.setEditable(false);
+	        			txtS.setLineWrap(true);
+	        			newWindow.getContentPane().add(txtS);
+	        			
+	        			JLabel labelSld = new JLabel("Salad:");
+	        			labelSld.setBounds(20, 240, 150, 30);
+	        			newWindow.getContentPane().add(labelSld);
+	        			
+	        			JTextArea txtSld = new JTextArea(item.getSalad().newString());
+	        			txtSld.setBounds(80, 240, 600, 100);
+	        			txtSld.setEditable(false);
+	        			txtSld.setLineWrap(true);
+	        			newWindow.getContentPane().add(txtSld);;
+	        			
+	        			JLabel labelD = new JLabel("Dessert:");
+	        			labelD.setBounds(20, 340, 150, 30);
+	        			newWindow.getContentPane().add(labelD);
+	        			
+	        			JTextArea txtD = new JTextArea(item.getDessert().newString());
+	        			txtD.setBounds(80, 340, 600, 100);
+	        			txtD.setEditable(false);
+	        			txtD.setLineWrap(true);
+	        			newWindow.getContentPane().add(txtD);
+	        			
+	        			JLabel labelCal = new JLabel("Total Calories:");
+	        			labelCal.setBounds(20, 440, 150, 30);
+	        			newWindow.getContentPane().add(labelCal);
+	        			
+	        			JTextArea txtCal = new JTextArea(Integer.toString(item.totalCalories()));
+	        			txtCal.setBounds(120, 440, 150, 30);
+	        			txtCal.setEditable(false);
+	        			txtCal.setLineWrap(true);
+	        			newWindow.getContentPane().add(txtCal);
+	        			
+	        			JLabel labelPrice = new JLabel("Total Price: $");
+	        			labelPrice.setBounds(20, 490, 150, 30);
+	        			newWindow.getContentPane().add(labelPrice);
+	        			
+	        			JTextArea txtPrice = new JTextArea(Double.toString(item.totalPrice()));
+	        			txtPrice.setBounds(120, 490, 150, 30);
+	        			txtPrice.setEditable(false);
+	        			txtPrice.setLineWrap(true);
+	        			newWindow.getContentPane().add(txtPrice);
+	        		}
+	        	}
+	        });
+	        
+	        
+	        btnDelete = new JButton("Delete All");
+	        btnDelete.setBounds(380, 260, 100, 29);
+	        mainFrame.getContentPane().add(btnDelete);
+	        btnDelete.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent b) {
+	        	listModel.removeAllElements();
+	        	}
+	        });
+	        
+	        
+	        btnSave = new JButton("Save");
+	        btnSave.setBounds(328, 295, 100, 29);
+	        mainFrame.getContentPane().add(btnSave);
+	        btnSave.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent c) {
+	        	}
+	        });
+	        		
+	        		
+	        		
 		JButton button = new JButton("Create Menu With These Dishes");
 		button.setBounds(20, 230, 200, 29);
 		button.addActionListener(new ActionListener() {
@@ -42,6 +158,7 @@ public class MenuManagerGUI {
 				createdMenu.setSide((Sides)sideBox.getSelectedItem());
 				createdMenu.setSalad((Salad)saladBox.getSelectedItem());
 				createdMenu.setDessert((Dessert)dessertBox.getSelectedItem());
+				listModel.addElement(createdMenu);
 			}
 		});
 		mainFrame.getContentPane().add(button);
@@ -55,6 +172,18 @@ public class MenuManagerGUI {
 		lbl2 = new JLabel("Generate a menu");
 		lbl2.setBounds(10, 300, 150, 30);
 		mainFrame.getContentPane().add(lbl2);
+		
+		btnRandom = new JButton("Generate a Random Menu");
+		btnRandom.setBounds(10, 340, 200, 29);
+		mainFrame.getContentPane().add(btnRandom);
+		 btnRandom.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent d) {
+	        		String userCreatedMenu = JOptionPane.showInputDialog("Please input a name for the random menu");
+	        		Menu userRandomMenu = menu.randomMenu(userCreatedMenu);
+	        		listModel.addElement(userRandomMenu);
+	        	}
+	        });
+		
 		
 		lbl_entree = new JLabel("Entree");
 		lbl_entree.setBounds(20, 40, 150, 30);
@@ -75,28 +204,31 @@ public class MenuManagerGUI {
 		createMenu = new JLabel("Created Menus");
 		createMenu.setBounds(300, 20, 150, 30);
 		mainFrame.getContentPane().add(createMenu);
+	        
+	        
+	        
+		/*field = new ();
+		field.setBounds(275, 50, 200, 200);
+		mainFrame.getContentPane().add(field);
+		*/
 		
-		field = new JTextField("");
-		field.setBounds(275, 225, 200, 200);
-		mainFrame.getContentPane().add(entreeBox);
-		
-		entreeBox = new JComboBox<Entree>((Entree[]) menu.getEntrees().toArray());
-		entreeBox.setBounds(20, 140, 150, 30);
+		entreeBox = new JComboBox(menu.getEntrees().toArray());
+		entreeBox.setBounds(65, 40, 150, 30);
 		entreeBox.setSelectedIndex(-1);
 		mainFrame.getContentPane().add(entreeBox);
 		
-		sideBox = new JComboBox<Sides>((Sides[]) menu.getSides().toArray()); 
-		sideBox.setBounds(20, 140, 150, 30);
+		sideBox = new JComboBox(menu.getSides().toArray()); 
+		sideBox.setBounds(65, 90, 150, 30);
 		sideBox.setSelectedIndex(-1);
 		mainFrame.getContentPane().add(sideBox);
 		
-		saladBox = new JComboBox<Salad>((Salad[]) menu.getSalads().toArray()); 
-		saladBox.setBounds(20, 140, 150, 30);
+		saladBox = new JComboBox(menu.getSalads().toArray()); 
+		saladBox.setBounds(65, 140, 150, 30);
 		saladBox.setSelectedIndex(-1);
 		mainFrame.getContentPane().add(saladBox);
 		
-		dessertBox = new JComboBox<Dessert>((Dessert[]) menu.getDesserts().toArray()); 
-		dessertBox.setBounds(20, 140, 150, 30);
+		dessertBox = new JComboBox(menu.getDesserts().toArray()); 
+		dessertBox.setBounds(65, 190, 150, 30);
 		dessertBox.setSelectedIndex(-1);
 		mainFrame.getContentPane().add(dessertBox);
 		
