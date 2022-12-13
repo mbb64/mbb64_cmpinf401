@@ -1,10 +1,5 @@
 package mbb64_MenuManager;
 
-/**
- * Class FileManager
- * author : Max Bauer
- * edited: 11/27/2022
- */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -13,48 +8,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileWriter;
 
+/**
+ * Class FileManager author : Max Bauer created: 11/28/2022
+ */
+
 public class FileManager {
 
 	public static ArrayList<MenuItem> readItems(String fileName) {
 		ArrayList<MenuItem> menu = new ArrayList<MenuItem>();
-		/*try {
-			FileReader fr = new FileReader(fileName);
-			BufferedReader br = new BufferedReader(fr);
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				String[] menuInp = line.split("@@");
-				if(menuInp.length == 4) {
-					if(menuInp[1] == "entree") {
-						Entree e = new Entree(menuInp[0], menuInp[2], Integer.parseInt(menuInp[3]), Double.parseDouble(menuInp[4]));
-						menu.add(e);
-					}
-					if(menuInp[1] == "side") {
-							Sides s = new Sides(menuInp[0], menuInp[2], Integer.parseInt(menuInp[3]), Double.parseDouble(menuInp[4]));
-							menu.add(s);
-				}
-					if(menuInp[1] == "salad") {
-						Salad sld = new Salad(menuInp[0], menuInp[2], Integer.parseInt(menuInp[3]), Double.parseDouble(menuInp[4]));
-						menu.add(sld);
-			}
-					if(menuInp[1] == "dessert") {
-						Dessert d = new Dessert(menuInp[0], menuInp[2], Integer.parseInt(menuInp[3]), Double.parseDouble(menuInp[4]));
-						menu.add(d);
-		}
-					else {
-						System.out.println("Invalid");
-					}
-				}
-			}
-					br.close();
-					fr.close();
-			}catch (FileNotFoundException fnfe) {
-					fnfe.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				return menu;
-				*/
-					
 		try {
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
@@ -91,7 +52,7 @@ public class FileManager {
 			e.printStackTrace();
 		}
 		return menu;
-		
+
 	}
 
 	public static void writeMenu(String fileName, ArrayList<Menu> menus) {
